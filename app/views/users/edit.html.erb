@@ -1,0 +1,16 @@
+<!--投稿エラー表示呼び出し-->
+<%= render 'layouts/error_messages', model: @user %>
+
+<h1>User info</h1>
+<%= form_with model: @user do |f| %>
+  <div class="user-name">Name</div>
+    <%= f.text_field :name %>
+  <div class="user-image">Image</div>
+    <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+  <div class="form-body">Introduction</div>
+    <%= f.text_area :introduction %><br>
+  <div class="upload">
+    <%= f.submit " Update User" %>
+  </div>
+
+<% end %>

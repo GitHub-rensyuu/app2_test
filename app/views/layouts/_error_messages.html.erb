@@ -1,0 +1,13 @@
+<!--エラー時共通フォーマット-->
+
+  <% if model.errors.any? %>
+    <div id="error_explanation", style="color:red">
+      <h3><%= pluralize(model.errors.count, "error") %> prohibited this model from being saved:</h3>
+
+      <ul>
+        <% model.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>

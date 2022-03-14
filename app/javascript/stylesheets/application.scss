@@ -1,0 +1,22 @@
+// Bootstrap導入
+@import '~bootstrap/scss/bootstrap';
+// FontAwesomeの導入
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+
+// main{
+//   display:flex;
+//   width: 100%;
+//   margin:0 auto;
+
+// }
+
+.user-info{
+  padding:0 15px;
+}
+
+.books-table{
+  padding:0 15px;
+  margin:0 0 0 95px;
+}

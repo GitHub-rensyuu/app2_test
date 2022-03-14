@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'users/user', user: @user %>
+      <h2>New book</h2>
+      <%= render 'books/book', book: @newbook %>
+    </div>
+  <div class="col-xs-9">
+
+<table class='table table-striped table-hover'>
+  <h1>Book detail</h1>
+  <tbody>
+    <tr>
+      <td><%= image_tag @book.user.get_profile_image(30,30) %><br>
+          <%= link_to @user.name, user_path(@user) %>
+      </td>
+      <!--詳細リンク-->
+      <td><%= @book.title %></td>
+    　<td><%= @book.body %></td><br>
+
+      <!--bookのユーザー本人ならボタン表示-->
+    　<% if @book.user_id == current_user.id %>
+        <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-success"%></td>
+        <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
