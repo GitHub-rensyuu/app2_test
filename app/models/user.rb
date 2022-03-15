@@ -12,7 +12,6 @@ class User < ApplicationRecord
 
 
   # バリテーション設定
-  # validates :profile_image, presence: true
   validates :name, uniqueness: true, presence: true,  length: { minimum: 2, maximum: 20}       # 「2文字以上,20文字以内」
   validates :introduction, length: { maximum: 50 }# 「50文字以内」
 

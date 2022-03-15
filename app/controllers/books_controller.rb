@@ -2,21 +2,15 @@ class BooksController < ApplicationController
 
   # 詳細機能
   def show
-    # 本の新規データ定義
     @newbook = Book.new
-    # idの本定義
     @book = Book.find(params[:id])
-    # 本のユーザー定義
     @user = @book.user
   end
 
     # 一覧機能
   def index
-    # ユーザー定義
     @user = current_user
-    # 新規データ定義
     @book = Book.new
-    # データベース定義
     @books = Book.all
 
   end
@@ -28,7 +22,7 @@ class BooksController < ApplicationController
 
     if @book.save
      flash[:notice] = "You have created book successfully."
-     redirect_to books_path(@book)
+     redirect_to book_path(@book)
     else
       @user = current_user
       @books = Book.all
@@ -36,6 +30,7 @@ class BooksController < ApplicationController
     end
   end
 
+  # 編集機能
   def edit
     @book = Book.find(params[:id])
     if @book.user == current_user
@@ -50,7 +45,9 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id])
       @book.user_id = current_user.id
       if @book.update(book_params)
-        flash[:notice]="Book was successfully updated."
+        flash[:notice]="You have updated book successfully."
+        @book = Book.find(params[:id])
+        @book.user_id = current_user.id
         redirect_to book_path(@book.id)
       else
         render :edit
@@ -65,7 +62,7 @@ def destroy
       flash[:notice]="Book was successfully destroyed."
       redirect_to books_path
     end
-  end
+end
 
 
 

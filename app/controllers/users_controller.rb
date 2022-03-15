@@ -29,39 +29,26 @@ class UsersController < ApplicationController
   def edit
     # idのユーザーを定義
     @user = User.find(params[:id])
-    if @user == current_user
-        render "edit"
-    else
+    # 他ユーザーのページの場合自分のページに移動
+    unless @user == current_user
+
       # 現在のユーザーのshowページにリンク
       redirect_to user_path(current_user)
     end
   end
 
-  # def show
-  #   # idのユーザーを定義
-  #   @user = User.find(params[:id])
-  #   #本を定義
-  #   @books = @user.books
-  # end
-
-
-
   # 更新機能
   def update
-    # idのユーザーを定義
     @user = User.find(params[:id])
     if @user.update(user_params)
 
       flash[:notice] = "You have updated user successfully."
-      # 現在のユーザーのshowページにリンク
       redirect_to user_path(current_user)
 
     else
       render :edit
     end
   end
-
-
 
   private
 

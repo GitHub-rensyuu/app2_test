@@ -5,14 +5,18 @@
 <div class="container">
   <!--横並びにする-->
   <div class="row">
-
-    <div class="col-xs-3">
+    <div class="col-md-3">
+      <!--User info部分-->
       <%= render 'users/user', user: @user %>
+
+      <!--New book部分-->
       <h2>New book</h2>
       <%= render 'books/book', book: @book %>
     </div>
-    <div class="col-xs-9">
-      <table class="table book-index">
+
+    <!--Books部分-->
+    <div class="col-md-9">
+      <table class="table book-index table2">
         <h2>Books</h2>
         <thead>
           <th></th>
@@ -35,4 +39,6 @@
         </tbody>
       </table>
     </div>
+
+
   </div>

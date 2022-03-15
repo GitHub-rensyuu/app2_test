@@ -5,15 +5,15 @@ class ApplicationController < ActionController::Base
 
   # サインイン後aboutページへ移動
   def after_sign_in_path_for(resource)
-    flash[:notice] = "Welcome! You have signed up successfully."
-    flash[:notice] = "Signed in successfully."
+    # flash[:notice] = "Welcome! You have signed up successfully."
+    # flash[:notice] = "Signed in successfully."
     # (resource)を付ける意味？
     user_path(resource)
   end
 
   # サインアウト後aboutページへ移動
   def after_sign_out_path_for(resource)
-    flash[:notice] = "Signed out successfully."
+    # flash[:notice] = "Signed out successfully."
     root_path
   end
 
@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   protected
   # ユーザー登録(sign_up)の際に、ユーザー名(name)のデータ操作を許可
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    # devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys:[:email])
   end
 end
