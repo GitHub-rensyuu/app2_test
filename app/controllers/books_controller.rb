@@ -40,20 +40,19 @@ class BooksController < ApplicationController
     end
   end
 
-
+  # 更新機能
   def update
       @book = Book.find(params[:id])
       @book.user_id = current_user.id
       if @book.update(book_params)
         flash[:notice]="You have updated book successfully."
-        @book = Book.find(params[:id])
-        @book.user_id = current_user.id
+        # @book = Book.find(params[:id])
+        # @book.user_id = current_user.id
         redirect_to book_path(@book.id)
       else
         render :edit
       end
   end
-
 
   # 削除機能
 def destroy
@@ -65,13 +64,11 @@ def destroy
 end
 
 
-
-
 # 投稿データのストロングパラメータ
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :name)
   end
 
 end

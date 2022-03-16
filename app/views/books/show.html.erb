@@ -1,19 +1,25 @@
-<div class="container">
+
+<div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
+
+      <!--User info部分-->
       <%= render 'users/user', user: @user %>
+
+      <!--New book部分-->
       <h2>New book</h2>
       <%= render 'books/book', book: @newbook %>
     </div>
 
-    <div class="col-md-9">
-      <table class='table table-striped table-hover'>
-        <h1>Book detail</h1>
+    <!--Book detail部分-->
+    <div class="col-md-8 offset-md-1">
+      <table class='table'>
+        <h2>Book detail</h2>
         <tbody>
           <tr>
             <td><%= image_tag @book.user.get_profile_image(30,30) %><br>
-                <%= link_to @user.name, user_path(@user) %>
-            </td>
+            <%= link_to @user.name, user_path(@user) %></td>
+
             <!--詳細リンク-->
             <td><%= @book.title %></td>
           　<td><%= @book.body %></td><br>

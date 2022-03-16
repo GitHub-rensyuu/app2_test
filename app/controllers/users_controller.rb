@@ -2,37 +2,24 @@ class UsersController < ApplicationController
 
   # 詳細機能
   def show
-    # idのユーザー定義
     @user = User.find(params[:id])
-    # 本の新規データ定義
     @book = Book.new
-    # ユーザーの本を定義
     @books = Book.where(user_id: @user.id)
   end
 
+  # 一覧機能
   def index
-  # ユーザー定義
   @user = current_user
-  # データベース定義
   @users = User.all
-  # 新規データ定義
   @book = Book.new
-  # データベース定義
   @books = Book.all
-  # @user = User.find(params[:id])
-  # # @userが持っているbooksを@booksに渡す
-  # @books = @user.books
   end
 
-
-
+  # 編集機能
   def edit
-    # idのユーザーを定義
     @user = User.find(params[:id])
     # 他ユーザーのページの場合自分のページに移動
     unless @user == current_user
-
-      # 現在のユーザーのshowページにリンク
       redirect_to user_path(current_user)
     end
   end
@@ -50,6 +37,8 @@ class UsersController < ApplicationController
     end
   end
 
+
+  # 投稿データのストロングパラメータ
   private
 
   def user_params

@@ -10,7 +10,7 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
+    <header class="shadow-sm mb-2">
       <nav class="navbar navbar-expand-lg avbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand p-3 text-light" href="/">Bookers</a>
@@ -78,18 +78,19 @@
       </nav>
     </header>
     <div class="body">
-    <!--成功メッセージ-->
 
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "#{key}", style: "color:green") %>
       <% end %>
-    <!--<p style="color:green">%= notice %></p>-->
-
-      <%= yield %>
+      <main>
+        <%= yield %>
+      </main>
 
     </div>
-    <footer class="copy-right-footer">
+
+    <footer class="copy-right-footer mt-5">
       CopyRight Infratop.inc
     </footer>
+
   </body>
 </html>
